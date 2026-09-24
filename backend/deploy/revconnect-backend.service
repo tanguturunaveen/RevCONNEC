@@ -9,9 +9,8 @@ WorkingDirectory=/home/ec2-user
 Environment="JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto"
 # You MUST set these environment variables properly on the actual instance if you aren't using application.properties hardcoding
 Environment="SPRING_PROFILES_ACTIVE=prod"
-# Environment="DB_USERNAME=root"
-# Environment="DB_PASSWORD=root"
-# Environment="JWT_SECRET=your_super_secret_key"
+Environment="MAIL_USERNAME=naveennaveen3714@gmail.com"
+Environment="MAIL_PASSWORD=otsh wvve nhan ydxv"
 ExecStart=/usr/lib/jvm/java-21-amazon-corretto/bin/java -Xmx512m -jar /home/ec2-user/revconnect-1.0.0.jar
 SuccessExitStatus=143
 Restart=always
