@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'EC2_IP', defaultValue: '13.126.2.73', description: 'Target AWS EC2 Public IPv4 Address')
+        string(name: 'EC2_IP', defaultValue: '13.234.67.90', description: 'Target AWS EC2 Public IPv4 Address')
         string(name: 'SSH_CREDENTIAL_ID', defaultValue: 'aws-ec2-ssh-key', description: 'Jenkins SSH Private Key Credential ID')
     }
 
     environment {
-        TARGET_IP = "${params.EC2_IP ?: '13.126.2.73'}"
+        TARGET_IP = "${params.EC2_IP ?: '13.234.67.90'}"
         CRED_ID   = "${params.SSH_CREDENTIAL_ID ?: 'aws-ec2-ssh-key'}"
     }
 
