@@ -138,14 +138,20 @@ export class FeedPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadFeed();
+    this.loadTrending();
     this.userService.getMyProfile().subscribe({
       next: (res) => {
-        if (res.success) this.currentUser = res.data;
-        this.loadFeed();
-        if (this.currentUser?.userType === 'BUSINESS' || this.currentUser?.userType === 'CREATOR') {
-          this.loadAnalytics();
+        if (res.success) {
+          this.currentUser = res.data;
+          this.sortPosts();
+          if (this.currentUser?.userType === 'BUSINESS' || this.currentUser?.userType === 'CREATOR') {
+            this.loadAnalytics();
+          }
         }
-        this.loadTrending();
+      },
+      error: (err) => {
+        console.warn('Error loading current user profile in FeedPage:', err);
       }
     });
   }

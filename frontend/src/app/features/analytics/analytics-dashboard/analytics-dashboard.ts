@@ -175,11 +175,14 @@ export class AnalyticsDashboard implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.randomizeNews();
+    this.loadData();
     this.userService.getMyProfile().subscribe({
       next: (res) => {
         if (res.success) this.currentUser = res.data;
-        this.randomizeNews();
-        this.loadData();
+      },
+      error: (err) => {
+        console.warn('Error loading current user in AnalyticsDashboard:', err);
       }
     });
     // Update session timer every second

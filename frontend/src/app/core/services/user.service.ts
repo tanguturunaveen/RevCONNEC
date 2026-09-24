@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay, catchError, throwError } from 'rxjs';
 import { ApiResponse } from './auth.service';
 import { PagedResponse } from './post.service';
 
@@ -58,11 +58,25 @@ export interface ProfileUpdateRequest {
 })
 export class UserService {
     private apiUrl = '/api/users';
+    private myProfileCache$: Observable<ApiResponse<UserResponse>> | null = null;
 
     constructor(private http: HttpClient) { }
 
-    getMyProfile(): Observable<ApiResponse<UserResponse>> {
-        return this.http.get<ApiResponse<UserResponse>>(`${this.apiUrl}/me`);
+    getMyProfile(forceRefresh = false): Observable<ApiResponse<UserResponse>> {
+        if (!this.myProfileCache$ || forceRefresh) {
+            this.myProfileCache$ = this.http.get<ApiResponse<UserResponse>>(`${this.apiUrl}/me`).pipe(
+                shareReplay(1),
+                catchError(err => {
+                    this.myProfileCache$ = null;
+                    return throwError(() => err);
+                })
+            );
+        }
+        return this.myProfileCache$;
+    }
+
+    clearProfileCache(): void {
+        this.myProfileCache$ = null;
     }
 
     getUserById(userId: number): Observable<ApiResponse<UserResponse>> {
@@ -74,6 +88,7 @@ export class UserService {
     }
 
     updateProfile(request: ProfileUpdateRequest): Observable<ApiResponse<UserResponse>> {
+        this.clearProfileCache();
         return this.http.put<ApiResponse<UserResponse>>(`${this.apiUrl}/me`, request);
     }
 
