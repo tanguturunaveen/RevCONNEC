@@ -79,7 +79,7 @@ pipeline {
                             # Frontend Deployment
                             ssh -o StrictHostKeyChecking=accept-new -i \$keyPath \${sshUser}@\${targetIp} "mkdir -p /tmp/frontend" 2>&1
                             scp -o StrictHostKeyChecking=accept-new -i \$keyPath -pr frontend/dist/revconnect-ui/browser/* \${sshUser}@\${targetIp}:/tmp/frontend/ 2>&1
-                            ssh -o StrictHostKeyChecking=accept-new -i \$keyPath \${sshUser}@\${targetIp} "sudo rm -f /etc/nginx/conf.d/revconnect-ssl.conf; sudo rm -rf /var/www/html/revconnect-ui/browser/*; sudo mkdir -p /var/www/html/revconnect-ui/browser/; sudo cp -r /tmp/frontend/* /var/www/html/revconnect-ui/browser/; sudo chown -R \${sshUser}:\${sshUser} /var/www/html/revconnect-ui; sudo chmod -R 755 /var/www/html/revconnect-ui/browser; sudo systemctl restart nginx" 2>&1
+                            ssh -o StrictHostKeyChecking=accept-new -i \$keyPath \${sshUser}@\${targetIp} "sudo rm -f /etc/nginx/conf.d/revconnect-ssl.conf; sudo rm -rf /var/www/html/revconnect-ui/browser/*; sudo mkdir -p /var/www/html/revconnect-ui/browser/; sudo cp -r /tmp/frontend/* /var/www/html/revconnect-ui/browser/; sudo chown -R nginx:nginx /var/www/html; sudo chmod -R 755 /var/www/html; sudo systemctl restart nginx" 2>&1
 
                             # SSL Certificate Setup - run via script to avoid quoting issues
                             scp -o StrictHostKeyChecking=accept-new -i \$keyPath backend/deploy/ssl-setup.sh \${sshUser}@\${targetIp}:/tmp/ssl-setup.sh 2>&1
