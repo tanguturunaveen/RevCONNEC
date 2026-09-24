@@ -15,7 +15,8 @@ import org.springframework.stereotype.Service;
 public class EmailService {
 
     private final JavaMailSender mailSender;
-    private static final String FROM_EMAIL = "ganeshchinamana39@gmail.com";
+    @org.springframework.beans.factory.annotation.Value("${spring.mail.username:naveennaveen3714@gmail.com}")
+    private String fromEmail;
     private static final String FROM_NAME = "RevConnect";
 
     /**
@@ -77,13 +78,13 @@ public class EmailService {
     private void sendHtmlEmail(String toEmail, String subject, String htmlBody) throws MessagingException, UnsupportedEncodingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-        helper.setFrom(FROM_EMAIL, FROM_NAME);
+        helper.setFrom(fromEmail, FROM_NAME);
         helper.setTo(toEmail);
         helper.setSubject(subject);
         helper.setText(htmlBody, true);
-        helper.setReplyTo(FROM_EMAIL);
+        helper.setReplyTo(fromEmail);
         mimeMessage.addHeader("X-Priority", "1");
-        mimeMessage.addHeader("List-Unsubscribe", "<mailto:" + FROM_EMAIL + "?subject=unsubscribe>");
+        mimeMessage.addHeader("List-Unsubscribe", "<mailto:" + fromEmail + "?subject=unsubscribe>");
         mailSender.send(mimeMessage);
     }
 
