@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +26,7 @@ public class EmailService {
      * @param toEmail recipient email address
      * @param otp     the 6-digit OTP
      */
+    @Async
     public void sendPasswordResetEmail(String toEmail, String otp) {
         log.info("Attempting to send real OTP email to: {}", toEmail);
 
@@ -53,6 +55,7 @@ public class EmailService {
      * @param toEmail recipient email address
      * @param otp     the 6-digit OTP
      */
+    @Async
     public void sendVerificationEmail(String toEmail, String otp) {
         log.info("Attempting to send Verification OTP email to: {}", toEmail);
 

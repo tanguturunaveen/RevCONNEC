@@ -112,7 +112,7 @@ export class Register {
           this.successMessage = 'Registration successful! Please login with your credentials.';
           this.errorMessage = '';
           this.cdr.detectChanges();
-          setTimeout(() => this.router.navigate(['/login']), 3000);
+          setTimeout(() => this.router.navigate(['/login']), 1200);
         } else {
           this.errorMessage = response.message || 'Verification failed.';
         }
