@@ -57,7 +57,7 @@ pipeline {
                             \$keyPath = "\$env:WORKSPACE\\jenkins-key-\${env:BUILD_NUMBER}.pem"
                             Copy-Item -Path \$env:SSH_KEY -Destination \$keyPath -Force
 
-                            icacls \$keyPath /inheritance:r /grant:r "NT AUTHORITY\\SYSTEM:F" /grant:r "BUILTIN\\Administrators:F"
+                            icacls \$keyPath /inheritance:r /grant:r "\${env:USERNAME}:F" /grant:r "NT AUTHORITY\\SYSTEM:F" /grant:r "BUILTIN\\Administrators:F"
 
                             # Absorb the first-time SSH known_hosts warning to prevent PowerShell from throwing a fatal stderr exception
                             \$ErrorActionPreference = "Continue"
