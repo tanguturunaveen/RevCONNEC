@@ -1,0 +1,15 @@
+target/
+.git/
+.idea/
+.mvn/
+.vscode/
+*.iml
+*.iws
+*.ipr
+*.log
+uploads/
+deploy/
+DEPLOY.md
+README.md
+.gitignore
+.gitattributes

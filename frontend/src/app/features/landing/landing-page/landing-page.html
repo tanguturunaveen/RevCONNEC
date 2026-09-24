@@ -1,0 +1,172 @@
+<div class="landing-wrapper">
+    <!-- Premium Glass Navbar -->
+    <nav class="landing-nav glass-nav">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="logo-morph">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <span class="brand-text">RevConnect</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">Network</a>
+                <button class="btn-glass" [routerLink]="['/login']">Sign In</button>
+                <button class="btn-primary-glow" [routerLink]="['/register']">Join Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                The Future of <span class="gradient-text">Professional Networking</span> is Here.
+            </h1>
+            <p class="hero-subtitle">
+                Connect, collaborate, and grow your career or business on the most dynamic ecosystem designed for creators and professionals.
+            </p>
+            <div class="hero-actions">
+                <button class="btn-hero-primary" (click)="getStarted()">
+                    Get Started Free <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="btn-hero-secondary">
+                    Explore Trends <i class="fa-solid fa-fire"></i>
+                </button>
+            </div>
+            
+            <!-- Hero Interface Teaser -->
+            <div class="hero-preview glass-card">
+                <div class="preview-header">
+                    <div class="dots"><span></span><span></span><span></span></div>
+                    <div class="search-bar">Search professionals...</div>
+                </div>
+                <div class="preview-body">
+                    <div class="mock-sidebar">
+                        <div class="sidebar-user">
+                            <div class="mock-avatar-sm"></div>
+                            <div class="sidebar-text">My Network</div>
+                        </div>
+                        <div class="sidebar-user">
+                            <i class="fa-solid fa-compass"></i>
+                            <div class="sidebar-text">Explore</div>
+                        </div>
+                        <div class="sidebar-user">
+                            <i class="fa-solid fa-bookmark"></i>
+                            <div class="sidebar-text">Saved</div>
+                        </div>
+                    </div>
+                    <div class="mock-feed">
+                        <!-- Mock Post 1 -->
+                        <div class="mock-post">
+                            <div class="post-top">
+                                <div class="mock-avatar-md"></div>
+                                <div class="post-meta-wrap">
+                                    <div class="post-user-name">Sarah Jenkins</div>
+                                    <div class="post-user-handle">@sarah_creative</div>
+                                </div>
+                            </div>
+                            <div class="post-desc">Just launched our new brand identity for @NextGen. Thoughts? 🚀</div>
+                            <div class="post-img-placeholder"></div>
+                        </div>
+                        <!-- Mock Post 2 -->
+                        <div class="mock-post">
+                            <div class="post-top">
+                                <div class="mock-avatar-md cyan"></div>
+                                <div class="post-meta-wrap">
+                                    <div class="post-user-name">Alex Rivera</div>
+                                    <div class="post-user-handle">@arivera_pro</div>
+                                </div>
+                            </div>
+                            <div class="post-desc">Looking for a Senior UX Designer to join our team in London. DM me!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-num">50K+</span>
+            <span class="stat-label">Active Users</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num">120+</span>
+            <span class="stat-label">Success Stories</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num">98%</span>
+            <span class="stat-label">Growth Rate</span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-header">
+            <span class="badge">Innovation</span>
+            <h2>Tailored for your <span class="gradient-text">Ambition</span></h2>
+            <p>Everything you need to showcase your talent or scale your business.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card glass-card">
+                <div class="feature-icon i-purple">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <h3>Dynamic Profiles</h3>
+                <p>Personalized showcases for individuals, creators, and businesses with rich media support.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <div class="feature-icon i-cyan">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h3>Creator Analytics</h3>
+                <p>Deep insights into your reach and engagement. Understand exactly how your audience interacts.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <div class="feature-icon i-pink">
+                    <i class="fa-solid fa-bullhorn"></i>
+                </div>
+                <h3>Business Reach</h3>
+                <p>Promote your services with built-in Call To Action tools and targeted professional exposure.</p>
+            </div>
+            <div class="feature-card glass-card">
+                <div class="feature-icon i-yellow">
+                    <i class="fa-solid fa-message"></i>
+                </div>
+                <h3>Real-time Collab</h3>
+                <p>Seamless messaging and networking tools to turn connections into active partnerships.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="final-cta">
+        <div class="cta-card glass-card">
+            <h2>Ready to redefine your <span class="gradient-text">Network?</span></h2>
+            <p>Join thousands of professionals already thriving on RevConnect.</p>
+            <button class="btn-primary-glow xl" [routerLink]="['/register']">Create Your Profile Today</button>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2026 RevConnect. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Help</a>
+            </div>
+        </div>
+    </footer>
+</div>
